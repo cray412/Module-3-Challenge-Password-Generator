@@ -1,45 +1,37 @@
-// Number Array
-var numbersArray = [];
-
-for (var i = 0; i < 10; i++) {
-    numbersArray.push(i);
-}
-
-console.log(numbersArray);
-
-// Lowercase Letter Array
-var lowerCaseAlphabetsArray = [];
-
-for (var i = 0; i < 26; i++) {
-    var lowerCaseChar = String.fromCharCode(97 + i);
-    lowerCaseAlphabetsArray.push(lowerCaseChar);
-}
-
-console.log(lowerCaseAlphabetsArray);
-
-// Uppercase Letter Array
-
-var upperCaseAlphabetsArray = [];
-
-for (var i = 0; i < 26; i++) {
-    var upperCaseChar = String.fromCharCode(65 + i);
-    upperCaseAlphabetsArray.push(upperCaseChar);
-}
-
-console.log(upperCaseAlphabetsArray);
-
-// Special Character Array
-
-var specialCharacter = ["!", "@", "#", "$", "%", "&", "*", "?", "/"];
-
-console.log(specialCharacter);
-
-// User Choice Collection Section
-
-
-// Password length choice
 
 var generatePassword = function () {
+
+    // Number Array
+    var numbersArray = [];
+
+    for (var i = 0; i < 10; i++) {
+        numbersArray.push(i);
+    }
+
+    // Lowercase Letter Array
+    var lowerCaseAlphabetsArray = [];
+
+    for (var i = 0; i < 26; i++) {
+        var lowerCaseChar = String.fromCharCode(97 + i);
+        lowerCaseAlphabetsArray.push(lowerCaseChar);
+    }
+
+    // Uppercase Letter Array
+
+    var upperCaseAlphabetsArray = [];
+
+    for (var i = 0; i < 26; i++) {
+        var upperCaseChar = String.fromCharCode(65 + i);
+        upperCaseAlphabetsArray.push(upperCaseChar);
+    }
+
+    // Special Character Array
+
+    var specialCharacterArray = ["!", "@", "#", "$", "%", "&", "*", "?", "/"];
+
+    // User Choice Collection Section
+
+    // Password length choice
 
     var length = prompt("Choose your password length (between 8 and 128 characters)");
 
@@ -47,6 +39,8 @@ var generatePassword = function () {
         return;
     }
     else {
+
+        // Check that value enetered is a number between 8 and 128 characters
 
         while (length < 8 || length > 128 || isNaN(length)) {
             var length = prompt("Please choose a password between 8 and 128 characters");
@@ -72,31 +66,63 @@ var generatePassword = function () {
         }
     } while (!number && !lowerCase && !upperCase && !specialCharacter);
 
+    var masterCharArray = [];
 
-    var userChoices = {
-
-        length: length,
-        number: number,
-        lowerCase: lowerCase,
-        upperCase: upperCase,
-        specialCharacter: specialCharacter,
+    if (number) {
+        var masterCharArray = masterCharArray.concat(numbersArray)
     }
 
-    masterCharArray = [];
+    if (lowerCase) {
+        var masterCharArray = masterCharArray.concat(lowerCaseAlphabetsArray)
+    }
 
-    console.log(number);
-    console.log(lowerCase);
-    console.log(upperCase);
-    console.log(specialCharacter);
+    if (upperCase) {
+        var masterCharArray = masterCharArray.concat(upperCaseAlphabetsArray)
+    }
+
+    if (specialCharacter) {
+        var masterCharArray = masterCharArray.concat(specialCharacterArray)
+    }
+
+    var finalPassword = "";
+
+    for (var i = 0; i < length; i++) {
+
+        var test = [Math.floor(Math.random() * masterCharArray.length)];
+
+        finalPassword = finalPassword.concat(masterCharArray[test]);
+
+    }
+
+    return finalPassword;
+
+    console.log(length);
+    console.log(masterCharArray);
+    console.log(test);
+    console.log(finalPassword);
+
+    // currently working on...
+    // var userChoices = {
+
+    //     length: length,
+    //     number: number,
+    //     lowerCase: lowerCase,
+    //     upperCase: upperCase,
+    //     specialCharacter: specialCharacter,
+    // }
+
+    // for (var key in userChoices) {
+    //     if 
+    // }
+
+    // ... end of currently working on.
+
+
+
+
+    // console.log(userChoices);
 
 }
-var test = [Math.floor(Math.random() * numbersArray.length)]
-
-console.log(length);
-
-console.log(test);
-
-
 
 // console.log(userChoice, upperCase);
 
