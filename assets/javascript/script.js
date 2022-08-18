@@ -47,34 +47,43 @@ console.log(specialCharacter);
 //     specialCharacter: specialCharacter,
 // }
 
-var chooseCriteria = function() {
 
+var getLength = function () {
+    var length = prompt("Choose your password length (between 8 and 128 characters)");
 
-var length = prompt("Choose your password length (between 8 and 128 characters)");
+    if (!length) {
+        return;
+    }
 
-while (length < 8 || length >128) {
-    var length = prompt("Please choose a password between 8 and 128 characters");
+    while (length < 8 || length > 128) {
+        var length = prompt("Please choose a password between 8 and 128 characters");
+    }
 }
 
-// console.log(length);
+getLength();
 
-var number = confirm("Do want to use numbers?")
+do {
 
-var lowerCase = confirm("Do want to use lowercase letters?")
+    var number = confirm("Do want to use numbers?")
 
-var upperCase = confirm("Do want to use uppercase letters?");
+    var lowerCase = confirm("Do want to use lowercase letters?")
 
-var specialCharacter = confirm("Do want to use special characters?");
+    var upperCase = confirm("Do want to use uppercase letters?");
 
-while (!number && !lowerCase && !upperCase && !specialCharacter) {
-    alert("Please chose at least one character type to be included in your password.")
-}
+    var specialCharacter = confirm("Do want to use special characters?");
+
+    if (!number && !lowerCase && !upperCase && !specialCharacter) {
+        alert("Please choose at least one character type to be included in your password.");
+    }
+} while (!number && !lowerCase && !upperCase && !specialCharacter);
+
+
 
 console.log(number);
 console.log(lowerCase);
 console.log(upperCase);
 console.log(specialCharacter);
-}
+
 
 
 var test = [Math.floor(Math.random() * upperCaseAlphabetsArray.length)]
@@ -88,7 +97,7 @@ console.log(test);
 function generatePassword() {
     var finalPassword = "display here";
     return finalPassword
-    
+
 }
 
 // Assignment Code
@@ -96,10 +105,10 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+    passwordText.value = password;
 
 }
 
