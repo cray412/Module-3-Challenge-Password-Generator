@@ -28,20 +28,52 @@ for (var i = 0; i < 26; i++) {
 
 console.log(upperCaseAlphabetsArray);
 
+// Special Character Array
+
 var specialCharacter = ["!", "@", "#", "$", "%", "&", "*", "?", "/"];
 
 console.log(specialCharacter);
 
-var length = prompt("Pick a number");
+// User Choice Collection Section
+
+// Password length choice
+
+// var userChoices = {
+
+//     length: length,
+//     number: number,
+//     lowerCase: lowerCase,
+//     upperCase: upperCase,
+//     specialCharacter: specialCharacter,
+// }
+
+var chooseCriteria = function() {
+
+
+var length = prompt("Choose your password length (between 8 and 128 characters)");
+
+while (length < 8 || length >128) {
+    var length = prompt("Please choose a password between 8 and 128 characters");
+}
+
+// console.log(length);
+
+var number = confirm("Do want to use numbers?")
+
+var lowerCase = confirm("Do want to use lowercase letters?")
 
 var upperCase = confirm("Do want to use uppercase letters?");
 
-var userChoices = {
+var specialCharacter = confirm("Do want to use special characters?");
 
-    length: length,
+while (!number && !lowerCase && !upperCase && !specialCharacter) {
+    alert("Please chose at least one character type to be included in your password.")
+}
 
-    upperCase: upperCase,    
-
+console.log(number);
+console.log(lowerCase);
+console.log(upperCase);
+console.log(specialCharacter);
 }
 
 
