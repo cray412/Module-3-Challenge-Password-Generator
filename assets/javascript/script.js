@@ -36,57 +36,63 @@ console.log(specialCharacter);
 
 // User Choice Collection Section
 
+
 // Password length choice
 
-// var userChoices = {
+var generatePassword = function () {
 
-//     length: length,
-//     number: number,
-//     lowerCase: lowerCase,
-//     upperCase: upperCase,
-//     specialCharacter: specialCharacter,
-// }
-
-
-var getLength = function () {
     var length = prompt("Choose your password length (between 8 and 128 characters)");
 
     if (!length) {
         return;
     }
+    else {
 
-    while (length < 8 || length > 128) {
-        var length = prompt("Please choose a password between 8 and 128 characters");
+        while (length < 8 || length > 128 || isNaN(length)) {
+            var length = prompt("Please choose a password between 8 and 128 characters");
+
+            if (!length) {
+                return;
+            }
+        }
     }
+
+    do {
+
+        var number = confirm("Do want to use numbers?")
+
+        var lowerCase = confirm("Do want to use lowercase letters?")
+
+        var upperCase = confirm("Do want to use uppercase letters?");
+
+        var specialCharacter = confirm("Do want to use special characters?");
+
+        if (!number && !lowerCase && !upperCase && !specialCharacter) {
+            alert("Please choose at least one character type to be included in your password.");
+        }
+    } while (!number && !lowerCase && !upperCase && !specialCharacter);
+
+
+    var userChoices = {
+
+        length: length,
+        number: number,
+        lowerCase: lowerCase,
+        upperCase: upperCase,
+        specialCharacter: specialCharacter,
+    }
+
+    masterCharArray = [];
+
+    console.log(number);
+    console.log(lowerCase);
+    console.log(upperCase);
+    console.log(specialCharacter);
+
 }
+var test = [Math.floor(Math.random() * numbersArray.length)]
 
-getLength();
-
-do {
-
-    var number = confirm("Do want to use numbers?")
-
-    var lowerCase = confirm("Do want to use lowercase letters?")
-
-    var upperCase = confirm("Do want to use uppercase letters?");
-
-    var specialCharacter = confirm("Do want to use special characters?");
-
-    if (!number && !lowerCase && !upperCase && !specialCharacter) {
-        alert("Please choose at least one character type to be included in your password.");
-    }
-} while (!number && !lowerCase && !upperCase && !specialCharacter);
-
-
-
-console.log(number);
-console.log(lowerCase);
-console.log(upperCase);
-console.log(specialCharacter);
-
-
-
-var test = [Math.floor(Math.random() * upperCaseAlphabetsArray.length)]
+console.log(length);
 
 console.log(test);
 
@@ -94,11 +100,11 @@ console.log(test);
 
 // console.log(userChoice, upperCase);
 
-function generatePassword() {
-    var finalPassword = "display here";
-    return finalPassword
+// function generatePassword() {
+//     var finalPassword = "display here";
+//     return finalPassword
 
-}
+// }
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
