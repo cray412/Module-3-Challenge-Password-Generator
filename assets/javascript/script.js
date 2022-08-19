@@ -66,13 +66,17 @@ var generatePassword = function () {
         if (!number && !lowerCase && !upperCase && !specialCharacter) {
             alert("Please choose at least one character type to be included in your password.");
         }
+        
     } while (!number && !lowerCase && !upperCase && !specialCharacter);
 
     // create master array of characters available to use in password from user choices
 
+    var finalPassword = "";
+
     var masterCharArray = [];
 
     if (number) {
+
         var masterCharArray = masterCharArray.concat(numbersArray)
     }
 
@@ -90,8 +94,6 @@ var generatePassword = function () {
 
     // generate string of random characters from master array matching password length chosen by user
 
-    var finalPassword = "";
-
     for (var i = 0; i < length; i++) {
 
         var test = [Math.floor(Math.random() * masterCharArray.length)];
@@ -102,36 +104,7 @@ var generatePassword = function () {
 
     return finalPassword;
 
-    // currently working on...
-    // var userChoices = {
-
-    //     length: length,
-    //     number: number,
-    //     lowerCase: lowerCase,
-    //     upperCase: upperCase,
-    //     specialCharacter: specialCharacter,
-    // }
-
-    // for (var key in userChoices) {
-    //     if 
-    // }
-
-    // ... end of currently working on.
-
-
-
-
-    // console.log(userChoices);
-
 }
-
-// console.log(userChoice, upperCase);
-
-// function generatePassword() {
-//     var finalPassword = "display here";
-//     return finalPassword
-
-// }
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
