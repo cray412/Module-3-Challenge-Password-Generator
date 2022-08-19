@@ -1,14 +1,14 @@
 
 var generatePassword = function () {
 
-    // Number Array
+    // generate number array
     var numbersArray = [];
 
     for (var i = 0; i < 10; i++) {
         numbersArray.push(i);
     }
 
-    // Lowercase Letter Array
+    // generate lowercase letter array
     var lowerCaseAlphabetsArray = [];
 
     for (var i = 0; i < 26; i++) {
@@ -16,7 +16,7 @@ var generatePassword = function () {
         lowerCaseAlphabetsArray.push(lowerCaseChar);
     }
 
-    // Uppercase Letter Array
+    // generate uppercase letter array
 
     var upperCaseAlphabetsArray = [];
 
@@ -25,31 +25,31 @@ var generatePassword = function () {
         upperCaseAlphabetsArray.push(upperCaseChar);
     }
 
-    // Special Character Array
+    // special character array
 
     var specialCharacterArray = ["!", "@", "#", "$", "%", "&", "*", "?", "/"];
 
-    // User Choice Collection Section
-
-    // Password length choice
+    // get user password length
 
     var length = prompt("Choose your password length (between 8 and 128 characters)");
 
     if (!length) {
-        return;
+        return "";
     }
     else {
 
-        // Check that value enetered is a number between 8 and 128 characters
+        // check that value enetered is a number between 8 and 128 characters
 
         while (length < 8 || length > 128 || isNaN(length)) {
             var length = prompt("Please choose a password between 8 and 128 characters");
 
             if (!length) {
-                return;
+                return "";
             }
         }
     }
+
+    // get user choice for characters to use in password
 
     do {
 
@@ -61,10 +61,14 @@ var generatePassword = function () {
 
         var specialCharacter = confirm("Do want to use special characters?");
 
+        // check that at least one of the character options is chosen
+
         if (!number && !lowerCase && !upperCase && !specialCharacter) {
             alert("Please choose at least one character type to be included in your password.");
         }
     } while (!number && !lowerCase && !upperCase && !specialCharacter);
+
+    // create master array of characters available to use in password from user choices
 
     var masterCharArray = [];
 
@@ -84,6 +88,8 @@ var generatePassword = function () {
         var masterCharArray = masterCharArray.concat(specialCharacterArray)
     }
 
+    // generate string of random characters from master array matching password length chosen by user
+
     var finalPassword = "";
 
     for (var i = 0; i < length; i++) {
@@ -95,11 +101,6 @@ var generatePassword = function () {
     }
 
     return finalPassword;
-
-    console.log(length);
-    console.log(masterCharArray);
-    console.log(test);
-    console.log(finalPassword);
 
     // currently working on...
     // var userChoices = {
